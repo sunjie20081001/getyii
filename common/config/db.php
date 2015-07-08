@@ -10,6 +10,6 @@ return [
             //'dsn' => 'mssql:host=localhost;dbname=mydatabase', // MS SQL Server, mssql driver
             //'dsn' => 'oci:dbname=//localhost:1521/mydatabase', // Oracle
             'username' => 'root',
-            'password' => '123',
+            'password' => 'root',
             'charset' => 'utf8',
 ];
