@@ -34,12 +34,12 @@ echo Nav::widget([
     'options' => ['class' => 'nav navbar-nav '],
     'items' => [
 //        ['label' =>  Icon::show('th-large')  . '首页', 'url' => ['/site/index'] ],
-        ['label' => Icon::show('comment')  .'社区', 'url' => ['/topic'], 'active' => $topicActive],
-        ['label' => Icon::show('envelope')  .'招聘', 'url' => ['/topic/default/index', 'node' =>'jobs'], 'active' => $jobsActive],
-        ['label' => Icon::show('th')  .'标签', 'url' => ['/site/tags'], 'active' => $topicTagsActive],
-        ['label' => Icon::show('signal')  .'招募', 'url' => ['/site/recruit']],
-        ['label' => Icon::show('user')  .'会员', 'url' => ['/site/users']],
-        ['label' => Icon::show('plane')  .'体验', 'url' => ['/site/experience']],
+        ['label' => '社区', 'url' => ['/topic'], 'active' => $topicActive],
+        ['label' => '招聘', 'url' => ['/topic/default/index', 'node' =>'jobs'], 'active' => $jobsActive],
+        ['label' => '标签', 'url' => ['/site/tags'], 'active' => $topicTagsActive],
+        ['label' => '招募', 'url' => ['/site/recruit']],
+        ['label' => '会员', 'url' => ['/site/users']],
+        ['label' => '体验', 'url' => ['/site/experience']],
 
     ],
     'encodeLabels' => false

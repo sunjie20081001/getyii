@@ -5,17 +5,13 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 ?>
 <div class="media">
-    <?= Html::a(Html::tag('span', $model['comment_count'], ['class' => 'badge badge-reply-count']),
-        ['/topic/default/view', 'id' => $model->id, '#' => 'comment' . $model['comment_count']], ['class' => 'pull-right']
-    ); ?>
-
     <div class="media-left">
-        <?= Html::a(Html::img($model->user->userAvatar, ['class' => 'media-object']),
+        <?= Html::a(Html::img($model->user->userAvatar, ['class' => 'media-object avater-48']),
             ['/user/default/show', 'username' => $model->user['username']]
         ); ?>
     </div>
+    
     <div class="media-body">
-
         <div class="media-heading">
             <?= Html::a(Html::encode($model->title),
                 ['/topic/default/view', 'id' => $model->id], ['title' => $model->title]
@@ -33,7 +29,7 @@ use yii\helpers\Html;
             echo Html::a(
                 $model->category->name,
                 ['/topic/default/index', 'node' => $model->category->alias],
-                ['class' => 'node']
+                ['class' => 'node label label-success']
             ), '•',
             Html::a(
                 $model->user['username'],
@@ -42,5 +38,11 @@ use yii\helpers\Html;
             Html::tag('span', Yii::$app->formatter->asRelativeTime($model->updated_at));
             ?>
         </div>
+    </div>
+    
+    <div class="media-right">
+            <?= Html::a(Html::tag('span', $model['comment_count'], ['class' => 'badge badge-reply-count']),
+        ['/topic/default/view', 'id' => $model->id, '#' => 'comment' . $model['comment_count']], ['class' => '']
+    ); ?>
     </div>
 </div>
