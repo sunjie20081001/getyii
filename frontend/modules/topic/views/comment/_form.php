@@ -11,7 +11,7 @@ use yii\helpers\Markdown;
 use yii\widgets\ActiveForm;
 
 ?>
-<div class="list-group-item">
+<div class="panel-body">
 
     <?php $form = ActiveForm::begin([
         'fieldConfig' => [

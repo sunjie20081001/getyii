@@ -20,11 +20,12 @@ use yii\helpers\Html;
             </span>
         <?php endif ?>
     </div>
-
+    
     <?= \yii\widgets\ListView::widget([
         'dataProvider' => $dataProvider,
-        'itemOptions' => ['class' => 'list-group-item media mt0'],
+        'itemOptions' => ['class' => ' media mt0 replay'],
         'summary' => false,
         'itemView' => '_item',
+        'layout' =>'<div class="panel-body">{items}</div><div class="panel-footer">{pager}</div>',
     ]) ?>
 </div>

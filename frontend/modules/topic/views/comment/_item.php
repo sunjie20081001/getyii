@@ -63,7 +63,7 @@ $index += +1 + $widget->dataProvider->pagination->page * $widget->dataProvider->
                             'class' => ($model->like) ? 'active': ''
                         ]
                     );
-                    echo Html::a('', '#',
+                    echo Html::a('回复', '#',
                         [
                             'data-username' => $model->user['username'],
                             'data-floor' => $index,
@@ -77,7 +77,7 @@ $index += +1 + $widget->dataProvider->pagination->page * $widget->dataProvider->
 
         </div>
 
-        <div class="media-body markdown-reply content-body">
+        <div class="media-body markdown-reply content-body markdown">
             <?= HtmlPurifier::process(Markdown::process($model->comment, 'gfm')) ?>
         </div>
     </div>
