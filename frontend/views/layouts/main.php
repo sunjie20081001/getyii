@@ -53,20 +53,11 @@ BowerAsset::register($this);
                     <dt>相关合作</dt>
                     <dd><a href="<?= Url::to(['/site/contact']) ?>">联系我们</a></dd>
                 </div>
-                <div class="col-sm-2">
-                    <dt>关注我们</dt>
-                    <dd><a href="<?= Url::to(['/site/timeline']) ?>">时间线</a></dd>
-                </div>
+                
                 <div class="col-sm-3">
                     <dt> 技术采用</dt>
                     由 <a href="https://github.com/forecho">forecho</a> 创建 项目地址: <a href="https://github.com/iiyii/getyii">GetYii</a></dd>
                     <dd> <?= Yii::powered() ?> <?= Yii::getVersion() ?> </dd>
-                </div>
-                <div class="col-sm-3">
-                    <a href="http://www.qiniu.com/">
-                        <img src="http://assets.qiniu.com/qiniu-transparent.png" alt="qiniu" width="240">
-                    </a>
-                    <p>赞助本站，你的LOGO将出现在这里</p>
                 </div>
             </div>
         </div>
@@ -79,7 +70,6 @@ BowerAsset::register($this);
                 class="glyphicon glyphicon-repeat"></span></button>
         <button type="button" class="btn btn-default" id="pageQrcode" title="本页二维码"><span
                 class="glyphicon glyphicon-qrcode"></span>
-            <img class="qrcode" width="130" height="130" src="http://qr.liantu.com/api.php?text=<?= Yii::$app->request->absoluteUrl ;?>&w200&m200"/>
         </button>
         <button type="button" class="btn btn-default" id="goBottom" title="去底部"><span
                 class="glyphicon glyphicon-arrow-down"></span></button>
