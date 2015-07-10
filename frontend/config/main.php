@@ -82,6 +82,9 @@ return [
         'nav' => [
             'class' => 'frontend\modules\nav\Module',
         ],
+         'course' => [
+            'class' => 'frontend\modules\course\Module',
+        ],
     ],
     'params' => $params,
 ];

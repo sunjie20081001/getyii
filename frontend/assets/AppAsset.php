@@ -22,8 +22,9 @@ class AppAsset extends AssetBundle
        // 'css/global.yel.css',
         // 'css/global.united.css',
         //'css/global.paper.css',
-       'css/global.css',
-        'css/site.css',  //site.css or site-ruyi.css
+       //'css/global.css',
+        //'css/site.css',  //site.css or site-ruyi.css
+        'css/main.css'
     ];
 
     public $js = [

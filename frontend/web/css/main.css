@@ -1,0 +1,89 @@
+/**
+ 自定义
+**/
+body{
+  font-family: "RobotoDraft", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+.navbar{
+  border-bottom: 1px solid #dfd7ca;
+}
+.nav > li.active{
+  background: #F8F5F0;
+}
+
+.navbar-brand{
+  padding:0  15px 0 0;
+}
+.topic-list{
+  
+}
+.topic-list-group{
+  min-height: 68px;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  vertical-align: top;
+  position: relative;
+
+}
+.topic-list-group:last-child{
+  border-bottom:none;
+}
+
+.avater-48{
+  width: 48px;
+  height: 48px;
+  border-radius: 3px;
+}
+
+.title-info{
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
+.title-info span, .title-info a{
+  margin:0 6px;
+}
+.title-info a:first-child{
+  margin: 0 6px 0 0;
+}
+.media-heading{
+  font-size:15px;
+}
+
+.footer{
+  border-top: 1px solid rgb(223, 215, 202);
+  padding: 14px 0 0 0;
+}
+.wrap{
+    min-height: 804px;
+}
+.excellent{
+  margin-left: 8px;
+  color: #EB5424
+}
+.topic-view .panel-heading h1{
+    margin-top: 0;
+  font-size: 24px;
+  color: #333;
+  text-align: left;
+  line-height: 100%;
+  margin-bottom: 8px;
+}
+.topic-view .info{
+  font-size:13px;
+}
+.opts a{
+  margin-right:6px;
+}
+.replay{
+  margin: 0 -15px;
+  padding: 10px 15px;
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+.replay:last-child{
+  border-bottom:none;
+}

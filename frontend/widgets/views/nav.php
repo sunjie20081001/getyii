@@ -8,8 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use common\models\PostMeta;
-use kartik\icons\Icon;
-Icon::map($this);
+
 
 $module = Yii::$app->controller->module->id;
 $action = Yii::$app->controller->action->id;
@@ -18,22 +17,25 @@ $tag = Yii::$app->request->getQueryParam('tag');
 $node = Yii::$app->request->getQueryParam('node');
 $topicActive = ($module == 'topic' && !$tag && $node != 'jobs' ) ? true : false;
 $topicTagsActive = $action == 'tags' || ($module == 'topic' && $tag) ? true : false;
+
+$courseActive = ($module == 'course') ? true : false;
 $navActive = ($module == 'nav') ? true : false;
 
 $jobsActive = ($node == 'jobs') ? true : false;
 
+
 NavBar::begin([
-    // 'brandLabel' => Html::img('/images/logo.png'),
-    'brandLabel' => 'Get√Yii',
+    'brandLabel' => Html::img('/images/logo.png'),
+    //'brandLabel' => '魔方小站',
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
-        'class' => 'navbar-white br0',
+        'class' => 'navbar-inverse br0',
     ],
 ]);
 echo Nav::widget([
     'options' => ['class' => 'nav navbar-nav '],
     'items' => [
-//        ['label' =>  Icon::show('th-large')  . '首页', 'url' => ['/site/index'] ],
+        ['label' => '课程', 'url' => ['/course'], 'active' => $courseActive],
         ['label' => '社区', 'url' => ['/topic'], 'active' => $topicActive],
         ['label' => '招聘', 'url' => ['/topic/default/index', 'node' =>'jobs'], 'active' => $jobsActive],
         ['label' => '标签', 'url' => ['/site/tags'], 'active' => $topicTagsActive],
@@ -74,3 +76,4 @@ echo Nav::widget([
     'activateParents' => true,
 ]);
 NavBar::end();
+?>
