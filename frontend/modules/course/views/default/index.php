@@ -1,19 +1,16 @@
-<div class="course-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
-</div>
+<?php
+
+
+
+use yii\helpers\Html;
+use frontend\widgets\Term;
+
+$this->title = "课程"
+?>
 
 <!--课程分类导航 start-->
 <div class="course-terms">
-    
+    <?= Term::widget(); ?>
 </div>
 <!--课程分类导航 end-->
 

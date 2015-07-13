@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             'excerpt',
             'parent_id',
+            'slug',
             'count',
             'order',
         ],

@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
+use common\components\db\ActiveRecord;
 
 /**
  * This is the model class for table "course_terms".
@@ -18,7 +20,7 @@ use Yii;
  *
  * @property Course[] $courses
  */
-class CourseTerms extends \yii\db\ActiveRecord
+class CourseTerms extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -34,9 +36,9 @@ class CourseTerms extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at'], 'required'],
+            [['title', 'slug'], 'required'],
             [['created_at', 'updated_at', 'parent_id', 'count', 'order'], 'integer'],
-            [['title', 'excerpt'], 'string', 'max' => 255]
+            [['title', 'excerpt', 'slug'], 'string', 'max' => 255]
         ];
     }
 
@@ -52,8 +54,9 @@ class CourseTerms extends \yii\db\ActiveRecord
             'updated_at' => '更新时间',
             'excerpt' => '课程分类简介',
             'parent_id' => '父级分类',
-            'count' => 'Count',
-            'order' => 'Order',
+            'slug' => '变量(短标签)',
+            'count' => '课程数量',
+            'order' => '排序',
         ];
     }
 
@@ -64,4 +67,38 @@ class CourseTerms extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Course::className(), ['course_terms' => 'id']);
     }
+
+    /**
+     * @return array
+     */
+    public static function getParents()
+    {
+        return ArrayHelper::map(static::find()->where(['parent_id' => null])->orWhere(['parent_id' => 0])->orderBy(['order' => SORT_ASC])->all(), 'id', 'title');
+    }
+
+    public static function getTermsByParentId($parent_id)
+    {
+        if($parent_id){
+            return ArrayHelper::map(static::find()->where(['parent_id' => $parent_id])->orderBy(['order' => SORT_ASC])->all(), 'id', 'title');
+        }
+        return static::getParents();
+    }
+
+    /**
+     * @return array
+     */
+    public static function getTermsByOrder()
+    {
+        $terms = [];
+        $parents = static::getParents();
+        foreach($parents as $key => $value){
+            $terms[$key] = array(
+                'parent' => $value,
+                'childs' => static::getTermsByParentId($key),
+            );
+        }
+
+        return $terms;
+    }
+
 }

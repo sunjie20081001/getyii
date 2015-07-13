@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\CourseTerms;
-use common\models\CourseTermsrSearch;
+use common\models\CourseTermsSearch;
 use common\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -32,7 +32,7 @@ class CourseTermsController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CourseTermsrSearch();
+        $searchModel = new CourseTermsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -65,6 +65,7 @@ class CourseTermsController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $model->order = 999;
             return $this->render('create', [
                 'model' => $model,
             ]);

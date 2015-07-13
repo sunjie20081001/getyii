@@ -45,7 +45,19 @@ class DefaultController extends Controller
     
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new CourseSearch();
+
+        $params = Yii::$app->request->queryParams;
+        empty($params['slug'])? :$params['CourseSearch']['slug'] = $params['slug'];
+
+        $dataProvider = $searchModel->search($params);
+        $sort = $dataProvider->getSort();
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'sorts'       => $this->sorts,
+            'dataProvider'=> $dataProvider
+        ]);
     }
     
     public function actionDelete($id){

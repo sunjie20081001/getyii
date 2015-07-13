@@ -14,13 +14,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?php //$form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?php //$form->field($model, 'updated_at')->textInput() ?>
 
     <?= $form->field($model, 'excerpt')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'parent_id')->textInput() ?>
+    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'parent_id')->dropDownList(['' => '根目录'] + $model->getParents()) ?>
 
     <?= $form->field($model, 'count')->textInput() ?>
 

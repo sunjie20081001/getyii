@@ -28,10 +28,9 @@ AppAsset::register($this);
 <body>
     <?php $this->beginBody() ?>
     <div id="wrapper">
-
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => '魔方',
                 'brandUrl' => Yii::$app->homeUrl,
                 'innerContainerOptions' => [
                     'class' => ''
@@ -45,14 +44,6 @@ AppAsset::register($this);
                  'options' => ['class' => 'navbar-nav navbar-right', 'id' => 'navbar-main'],
                  'items' => [
                      ['label' => 'Home', 'url' => ['/site/index']],
-                     ['label' => 'About', 'url' => ['/site/about']],
-                     ['label' => 'Contact', 'url' => ['/site/contact']],
-                     [
-                         'label' => 'Products', 'url' => ['product/index'],
-                         'items' => [
-                             ['label' => 'New Arrivals', 'url' => ['product/index', 'tag' => 'new']],
-                             ['label' => 'Most Popular', 'url' => ['product/index', 'tag' => 'popular']],
-                     ]],
                      Yii::$app->user->isGuest ?
                          ['label' => 'Login', 'url' => ['/site/login']] :
                          ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
@@ -79,13 +70,13 @@ AppAsset::register($this);
                                     ['label' => '导航分类', 'url' => ['nav/index']],
                                     ['label' => '导航链接', 'url' => ['nav-url/index']],
                                 ]],
-                            [
-                                'label' => 'Products', 'url' => ['product/index'],
-                                'items' => [
-                                ['label' => 'New Arrivals', 'url' => ['product/index', 'tag' => 'new']],
-                                ['label' => 'Most Popular', 'url' => ['product/index', 'tag' => 'popular']],
-                            ]],
+
                             ['label' => '右边栏设置', 'url' => ['right-link/index']],
+                            ['label' => '课程设置' , 'url' =>['course/index'] ,
+                                'items' =>[
+                                    ['label' => '课程分类', 'url' => ['course-terms/index'] ]
+                                ]
+                            ],
                             ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                         ],
                     ]); ?>
