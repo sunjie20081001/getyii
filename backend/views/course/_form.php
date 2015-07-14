@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use common\models\CourseTerms;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Course */
@@ -12,10 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
     <?= $form->field($model, 'user_id')->textInput() ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
@@ -24,7 +22,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'video_url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'course_terms')->textInput() ?>
+    <?= $form->field($model, 'course_terms')->widget(Select2::classname(), [
+        'data' => CourseTerms::getTermsArray(),
+        'options' => ['placeholder' => '选择一个分类'],       
+    ]); ?>
 
     <?= $form->field($model, 'excerpt')->textInput(['maxlength' => true]) ?>
 

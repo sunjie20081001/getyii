@@ -75,7 +75,23 @@ class CourseTerms extends ActiveRecord
     {
         return ArrayHelper::map(static::find()->where(['parent_id' => null])->orWhere(['parent_id' => 0])->orderBy(['order' => SORT_ASC])->all(), 'id', 'title');
     }
-
+    
+    /**
+    * 获取数组
+    * @return array
+    */
+    public static function getTermsArray(){
+        $terms = [];
+        
+        $parents = static::getParents();
+        foreach($parents as $key => $value){
+            $terms[$value] = ArrayHelper::map(static::getTermsByParentId($key), 'id', 'title');
+        }    
+        
+        return $terms;
+    }
+    
+    
     public static function getTermsByParentId($parent_id = null)
     {
         return static::find()->where(['parent_id' => $parent_id])->orderBy(['order' => SORT_ASC])->all();

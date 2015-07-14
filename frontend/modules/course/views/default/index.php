@@ -28,7 +28,7 @@ $this->title = "课程"
             'itemOptions'  => ['class' => 'col-md-4'],
             'summary'      => false,
             'itemView'     => '_item',
-            'layout'       => '<div class="row">{itmes}</div>{pager}'
+            'layout'       => '<div class="row">{items}</div>{pager}'
         ])?>
     </div>
 </div>

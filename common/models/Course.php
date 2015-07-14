@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\components\db\ActiveRecord;
 
 /**
  * This is the model class for table "course".
@@ -23,8 +24,13 @@ use Yii;
  * @property User $user
  * @property Video[] $videos
  */
-class Course extends \yii\db\ActiveRecord
+class Course extends ActiveRecord
 {
+    const REC_YES = 1;
+    const REC_NO = 0;
+    
+    
+    
     /**
      * @inheritdoc
      */
@@ -39,8 +45,10 @@ class Course extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'user_id', 'course_terms'], 'required'],
-            [['created_at', 'updated_at', 'user_id', 'course_terms'], 'integer'],
+            [['user_id', 'course_terms'], 'required'],
+            [['created_at', 'updated_at', 'user_id', 'course_terms', 'is_rec'], 'integer'],
+            ['is_rec', 'default', 'value' => self::REC_NO],
+            ['is_rec', 'in', 'range' => [self::REC_YES, self::REC_NO]],
             [['content'], 'string'],
             [['title', 'video_url', 'excerpt', 'image'], 'string', 'max' => 255]
         ];
@@ -55,13 +63,14 @@ class Course extends \yii\db\ActiveRecord
             'id' => 'ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'user_id' => 'User ID',
-            'title' => 'Title',
-            'content' => 'Content',
-            'video_url' => 'Video Url',
-            'course_terms' => 'Course Terms',
-            'excerpt' => 'Excerpt',
-            'image' => 'Image',
+            'user_id' => '用户',
+            'title' => '标题',
+            'content' => '内容',
+            'video_url' => '视频地址',
+            'course_terms' => '课程分类',
+            'excerpt' => '简述',
+            'image' => '图片',
+            'is_rec' => '是否推荐', //0, 1
         ];
     }
 

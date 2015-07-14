@@ -74,7 +74,8 @@ AppAsset::register($this);
                             ['label' => '右边栏设置', 'url' => ['right-link/index']],
                             ['label' => '课程设置' , 'url' =>['course/index'] ,
                                 'items' =>[
-                                    ['label' => '课程分类', 'url' => ['course-terms/index'] ]
+                                    ['label' => '课程分类', 'url' => ['course-terms/index'] ],
+                                    ['label' => '课程设置', 'url' => ['course/index']],
                                 ]
                             ],
                             ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
