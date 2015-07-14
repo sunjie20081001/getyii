@@ -76,6 +76,7 @@ AppAsset::register($this);
                                 'items' =>[
                                     ['label' => '课程分类', 'url' => ['course-terms/index'] ],
                                     ['label' => '课程设置', 'url' => ['course/index']],
+                                    ['label' => '课程视频', 'url' => ['video/index']],
                                 ]
                             ],
                             ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],

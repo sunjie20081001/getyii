@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\componet\db\ActiveRecord;
 
 /**
  * This is the model class for table "video".
@@ -21,7 +22,7 @@ use Yii;
  * @property CoruseUser[] $coruseUsers
  * @property Course $course
  */
-class Video extends \yii\db\ActiveRecord
+class Video extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -54,12 +55,12 @@ class Video extends \yii\db\ActiveRecord
             'create_at' => 'Create At',
             'update_at' => 'Update At',
             'type' => 'Type',
-            'title' => 'Title',
-            'content' => 'Content',
-            'video_url' => 'Video Url',
-            'user_id' => 'User ID',
-            'status' => 'Status',
-            'course_id' => 'Course ID',
+            'title' => '标题',
+            'content' => '内容',
+            'video_url' => '视频地址',
+            'user_id' => '用户',
+            'status' => '状态',
+            'course_id' => '课程',
         ];
     }
 
