@@ -4,6 +4,7 @@
 
 use yii\helpers\Html;
 use frontend\widgets\Term;
+use yii\widgets\ListView;
 
 $this->title = "课程"
 ?>
@@ -16,6 +17,19 @@ $this->title = "课程"
 
 <!--视频列表 start-->
 <div class="course-list">
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+        <?= ListView::widget([
+            'dataProvider' => $dataProvider,
+            'itemOptions'  => ['class' => 'col-md-4'],
+            'summary'      => false,
+            'itemView'     => '_item',
+            'layout'       => '<div class="row">{itmes}</div>{pager}'
+        ])?>
+    </div>
 </div>
 <!--视频列表 end-->

@@ -39,12 +39,15 @@ class CourseSearch extends Course
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $conditions = [])
     {
-        $query = Course::find();
+        $query = Course::find()->where($conditions);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'  => ['defaultOrder' => [
+                'updated_at' => SORT_DESC,
+            ]]
         ]);
 
         $this->load($params);

@@ -21,8 +21,8 @@ class DefaultController extends Controller
     
     public $sorts = [
       'new' => '新',
-      'hot'  => '热',
-      'rec'  => '荐',
+      'hot' => '热',
+      'rec' => '荐',
     ];
     
     public function behaviors(){
@@ -49,13 +49,26 @@ class DefaultController extends Controller
 
         $params = Yii::$app->request->queryParams;
         empty($params['slug'])? :$params['CourseSearch']['slug'] = $params['slug'];
-
+        if(isset($params['slug'])){
+            $courseTerm = CourseTerms::findOne(['slug' => $params['slug']]);
+            ($courseTerm) ? $params['CourseSearch']['course_terms'] = $courseTerm->id :'';
+        }
+        
+        // 
         $dataProvider = $searchModel->search($params);
-        $sort = $dataProvider->getSort();
-
+        // $sort = $dataProvider->getSort();
+        // $sort->attributes = array_merge(
+        //     $sort->attrbutes,[
+        //         'new' => [
+        //             'asc' => [
+        //                 'created_at' =>
+        //             ]
+        //         ]
+        //     ]
+        // );
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'sorts'       => $this->sorts,
+            // 'sorts'       => $this->sorts,
             'dataProvider'=> $dataProvider
         ]);
     }

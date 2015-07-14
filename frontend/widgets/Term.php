@@ -7,6 +7,7 @@
  */
 namespace frontend\widgets;
 
+use Yii;
 use common\models\CourseTerms;
 
 
@@ -14,9 +15,11 @@ class Term extends \yii\bootstrap\Widget
 {
     public function run()
     {
+        $slug = Yii::$app->request->get('slug');
         $terms = CourseTerms::getTermsByOrder();
         return $this->render('term', [
-            'terms' => $terms
+            'terms' => $terms,
+            'current' => $slug,
         ]);
     }
 }

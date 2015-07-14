@@ -76,12 +76,9 @@ class CourseTerms extends ActiveRecord
         return ArrayHelper::map(static::find()->where(['parent_id' => null])->orWhere(['parent_id' => 0])->orderBy(['order' => SORT_ASC])->all(), 'id', 'title');
     }
 
-    public static function getTermsByParentId($parent_id)
+    public static function getTermsByParentId($parent_id = null)
     {
-        if($parent_id){
-            return ArrayHelper::map(static::find()->where(['parent_id' => $parent_id])->orderBy(['order' => SORT_ASC])->all(), 'id', 'title');
-        }
-        return static::getParents();
+        return static::find()->where(['parent_id' => $parent_id])->orderBy(['order' => SORT_ASC])->all();
     }
 
     /**
@@ -90,11 +87,11 @@ class CourseTerms extends ActiveRecord
     public static function getTermsByOrder()
     {
         $terms = [];
-        $parents = static::getParents();
-        foreach($parents as $key => $value){
-            $terms[$key] = array(
-                'parent' => $value,
-                'childs' => static::getTermsByParentId($key),
+        $parents = static::getTermsByParentId();
+        foreach($parents as $parent){
+            $terms[] = array(
+                'parent' => $parent,
+                'children' => static::getTermsByParentId($parent->id),
             );
         }
 
