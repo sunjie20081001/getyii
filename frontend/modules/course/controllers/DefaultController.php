@@ -60,8 +60,9 @@ class DefaultController extends Controller
         // 
         $dataProvider = $searchModel->search($params);
         $sort = $dataProvider->getSort();
+
         $sort->attributes = array_merge(
-            $sort->attrbutes,[
+            $sort->attributes,[
                 'new' => [
                     'asc' => [
                         'created_at' => SORT_DESC,
@@ -73,7 +74,6 @@ class DefaultController extends Controller
                         'created_at' => SORT_DESC,
                     ],
                 ],
-                'rec' => []
             ]
         );
         return $this->render('index', [
