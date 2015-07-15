@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-use common\componet\db\ActiveRecord;
+use common\components\db\ActiveRecord;
 
 /**
  * This is the model class for table "video".
@@ -38,7 +38,7 @@ class Video extends ActiveRecord
     public function rules()
     {
         return [
-            [['create_at', 'update_at', 'user_id', 'status', 'course_id'], 'integer'],
+            [['created_at', 'updated_at', 'user_id', 'status', 'course_id'], 'integer'],
             [['content'], 'string'],
             [['type'], 'string', 'max' => 32],
             [['title', 'video_url'], 'string', 'max' => 255]
@@ -52,8 +52,8 @@ class Video extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'create_at' => 'Create At',
-            'update_at' => 'Update At',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
             'type' => 'Type',
             'title' => '标题',
             'content' => '内容',

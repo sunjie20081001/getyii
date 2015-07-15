@@ -31,6 +31,7 @@ class Course extends ActiveRecord
     
     
     
+    
     /**
      * @inheritdoc
      */
@@ -53,7 +54,8 @@ class Course extends ActiveRecord
             [['title', 'video_url', 'excerpt', 'image'], 'string', 'max' => 255]
         ];
     }
-
+    
+    
     /**
      * @inheritdoc
      */
@@ -104,5 +106,12 @@ class Course extends ActiveRecord
     public function getVideos()
     {
         return $this->hasMany(Video::className(), ['course_id' => 'id']);
+    }
+    
+    public function recValues(){
+        return [
+            self::REC_NO  => '不推荐',
+            self::REC_YES => '推荐',            
+        ];
     }
 }

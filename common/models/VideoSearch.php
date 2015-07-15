@@ -18,7 +18,7 @@ class VideoSearch extends Video
     public function rules()
     {
         return [
-            [['id', 'create_at', 'update_at', 'user_id', 'status', 'course_id'], 'integer'],
+            [['id', 'created_at', 'updated_at', 'user_id', 'status', 'course_id'], 'integer'],
             [['type', 'title', 'content', 'video_url'], 'safe'],
         ];
     }
@@ -57,8 +57,8 @@ class VideoSearch extends Video
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'create_at' => $this->create_at,
-            'update_at' => $this->update_at,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
             'user_id' => $this->user_id,
             'status' => $this->status,
             'course_id' => $this->course_id,
