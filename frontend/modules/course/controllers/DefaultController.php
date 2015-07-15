@@ -48,27 +48,37 @@ class DefaultController extends Controller
         $searchModel = new CourseSearch();
 
         $params = Yii::$app->request->queryParams;
+        //分类
         empty($params['slug'])? :$params['CourseSearch']['slug'] = $params['slug'];
         if(isset($params['slug'])){
             $courseTerm = CourseTerms::findOne(['slug' => $params['slug']]);
             ($courseTerm) ? $params['CourseSearch']['course_terms'] = $courseTerm->id :'';
         }
         
+        //排序
+        empty($params['sort'])? '':'';
         // 
         $dataProvider = $searchModel->search($params);
-        // $sort = $dataProvider->getSort();
-        // $sort->attributes = array_merge(
-        //     $sort->attrbutes,[
-        //         'new' => [
-        //             'asc' => [
-        //                 'created_at' =>
-        //             ]
-        //         ]
-        //     ]
-        // );
+        $sort = $dataProvider->getSort();
+        $sort->attributes = array_merge(
+            $sort->attrbutes,[
+                'new' => [
+                    'asc' => [
+                        'created_at' => SORT_DESC,
+                    ],
+                ],
+                'hot' => [
+                    'asc' => [
+                        
+                        'created_at' => SORT_DESC,
+                    ],
+                ],
+                'rec' => []
+            ]
+        );
         return $this->render('index', [
             'searchModel' => $searchModel,
-            // 'sorts'       => $this->sorts,
+            'sorts'       => $this->sorts,
             'dataProvider'=> $dataProvider
         ]);
     }
