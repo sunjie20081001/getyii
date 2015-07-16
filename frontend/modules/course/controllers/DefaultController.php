@@ -74,12 +74,30 @@ class DefaultController extends Controller
                         'created_at' => SORT_DESC,
                     ],
                 ],
+                'rec' => [
+                    'asc' => [
+                        'create_at' => SORT_DESC,
+                    ],
+                ],
             ]
         );
         return $this->render('index', [
             'searchModel' => $searchModel,
             'sorts'       => $this->sorts,
             'dataProvider'=> $dataProvider
+        ]);
+    }
+    
+    /**
+    * 课程详细页面
+    * @param integer $id
+    * @return mixed
+    */
+    public function actionView($id){
+        $model = Course::findOne($id);
+        
+        return $this->render('view', [
+            'model' => $model
         ]);
     }
     
