@@ -52,8 +52,13 @@ class Video extends ActiveRecord
     {
         return [
             'id' => 'ID',
+<<<<<<< HEAD
             'created_at' => 'Create At',
             'updated_at' => 'Update At',
+=======
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+>>>>>>> c44fd00bbc92f28b8983b26eaa8db8b0a4a679cf
             'type' => 'Type',
             'title' => '标题',
             'content' => '内容',

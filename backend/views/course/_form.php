@@ -27,6 +27,7 @@ use common\models\CourseTerms;
         'options' => ['placeholder' => '选择一个分类'],       
     ]); ?>
 
+    <?= $form->field($model, 'is_rec')->dropDownList($model->recValues());?>
     <?= $form->field($model, 'excerpt')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>

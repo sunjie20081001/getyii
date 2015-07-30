@@ -45,6 +45,7 @@ class CourseSearch extends Course
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            
             'sort'  => ['defaultOrder' => [
                 'updated_at' => SORT_DESC,
             ]]
