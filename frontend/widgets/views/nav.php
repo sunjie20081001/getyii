@@ -25,19 +25,19 @@ $jobsActive = ($node == 'jobs') ? true : false;
 
 
 NavBar::begin([
-    'brandLabel' => Html::img('/images/logo.png'),
-    //'brandLabel' => '魔方小站',
+    //'brandLabel' => Html::img('/images/logo.png'),
+    'brandLabel' => '番茄魔方',
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
-        'class' => 'navbar-inverse br0',
+        'class' => 'br0',
     ],
 ]);
 echo Nav::widget([
     'options' => ['class' => 'nav navbar-nav '],
     'items' => [
-        ['label' => '课程', 'url' => ['/course'], 'active' => $courseActive],
+        //['label' => '课程', 'url' => ['/course'], 'active' => $courseActive],
         ['label' => '社区', 'url' => ['/topic'], 'active' => $topicActive],
-        ['label' => '招聘', 'url' => ['/topic/default/index', 'node' =>'jobs'], 'active' => $jobsActive],
+        //['label' => '招聘', 'url' => ['/topic/default/index', 'node' =>'jobs'], 'active' => $jobsActive],
         ['label' => '标签', 'url' => ['/site/tags'], 'active' => $topicTagsActive],
         ['label' => '招募', 'url' => ['/site/recruit']],
         ['label' => '会员', 'url' => ['/site/users']],
@@ -60,7 +60,7 @@ if (Yii::$app->user->isGuest) {
 
     // 个人中心
     $menuItems[] = [
-        'label' => Yii::$app->user->identity->username,
+        'label' => Yii::$app->user->identity->display_name,
         'items' => [
             ['label' => '我的主页', 'url' => ['/user/default']],
             ['label' => '帐号设置', 'url' => ['/user/setting/profile']],

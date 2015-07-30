@@ -8,7 +8,7 @@ $this->title = \Yii::$app->setting->get('siteName');
 ?>
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="text-center"><?= \Yii::t('app', 'site_intro') ?></div>
+            <div class="text-center">番茄魔方－一个魔方，整个世界！</div>
         </div>
     </div>
 
@@ -21,7 +21,7 @@ $this->title = \Yii::$app->setting->get('siteName');
             </h3>
         </div>
 
-        <div class="clearfix site-index-topic">
+        <div class="clearfix site-index-topic row">
             <?php if ($topics) {
                 foreach ($topics as $key => $vlaue) {
                     echo $this->render('_item', ['model' => $vlaue]);

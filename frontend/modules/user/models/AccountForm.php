@@ -14,6 +14,8 @@ use yii\base\Model;
 class AccountForm extends Model
 {
     /** @var string */
+    public $display_name;
+    /** @var string */
     public $email;
 
     /** @var string */
@@ -56,6 +58,7 @@ class AccountForm extends Model
             'username' => $this->user->username,
             'email'    => $this->user->email,
             'tagline'  => $this->user->tagline,
+            'display_name' => $this->user->display_name,
         ], false);
         parent::__construct($config);
     }
@@ -74,6 +77,7 @@ class AccountForm extends Model
             }, 'targetClass' => '\common\models\User', 'message' => '此{attribute}已经被使用。'],
             ['new_password', 'string', 'min' => 6],
             ['tagline', 'string', 'max' => 40],
+            ['display_name', 'string', 'max' => 40],
             ['current_password', function ($attr) {
                 if (!\Yii::$app->security->validatePassword($this->$attr, $this->user->password_hash)) {
                     $this->addError($attr, '当前密码是输入错误');
@@ -90,7 +94,8 @@ class AccountForm extends Model
             'username'         => '用户名',
             'new_password'     => '新密码',
             'tagline'          => '一句话介绍',
-            'current_password' => '当前密码'
+            'current_password' => '当前密码',
+            'display_name'     => '展示名'
         ];
     }
 
@@ -112,6 +117,7 @@ class AccountForm extends Model
             // 新密码没填写 则为不修改密码
             ($this->new_password) ? $this->user->password = $this->new_password : '';
             $this->user->tagline = $this->tagline;
+            $this->user->display_name = $this->display_name;
             return $this->user->save();
         }
 

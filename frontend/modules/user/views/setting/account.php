@@ -38,7 +38,7 @@ $this->title = '账号设置';
                 <?= $form->field($model, 'email') ?>
 
                 <?= $form->field($model, 'username') ?>
-
+                <?= $form->field($model, 'display_name')?>
                 <?= $form->field($model, 'tagline') ?>
 
                 <?= $form->field($model, 'new_password')->passwordInput()->hint('不填写则不修改密码') ?>
