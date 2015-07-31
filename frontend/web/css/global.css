@@ -7034,3 +7034,18 @@ input:focus,
 .replay:last-child{
   border-bottom:none;
 }
+
+/***自定义***/
+.topic-create .list-group-item{
+  border:none;
+}
+.mt0:first-child {
+  margin-top:0;
+}
+.mt0{
+
+}
+
+.cu-textarea-buttons{
+  margin-bottom: 2px;
+}

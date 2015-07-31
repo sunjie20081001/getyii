@@ -1,7 +1,7 @@
 <?php
 return [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=getyii', // MySQL, MariaDB
+            'dsn' => 'mysql:host=localhost;dbname=mofang', // MySQL, MariaDB
             //'dsn' => 'sqlite:/path/to/database/file', // SQLite
             //'dsn' => 'pgsql:host=localhost;port=5432;dbname=mydatabase', // PostgreSQL
             //'dsn' => 'cubrid:dbname=demodb;host=localhost;port=33000', // CUBRID
@@ -9,7 +9,7 @@ return [
             //'dsn' => 'dblib:host=localhost;dbname=mydatabase', // MS SQL Server, dblib driver
             //'dsn' => 'mssql:host=localhost;dbname=mydatabase', // MS SQL Server, mssql driver
             //'dsn' => 'oci:dbname=//localhost:1521/mydatabase', // Oracle
-            'username' => 'root',
-            'password' => 'root',
+            'username' => 'webroot',
+            'password' => 'tsVVmX7GJDcGPYfh',
             'charset' => 'utf8',
 ];

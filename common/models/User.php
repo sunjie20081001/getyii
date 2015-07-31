@@ -279,4 +279,8 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
     }
+
+    public function getLabel(){
+        return !empty($this->display_name)?$this->display_name:$this->username;
+    }
 }

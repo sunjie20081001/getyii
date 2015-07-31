@@ -49,7 +49,7 @@ class PostSearch extends Post
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 2,
+                'pageSize' => 15,
             ],
             'sort' => ['defaultOrder' => [
                 'order' => SORT_ASC,

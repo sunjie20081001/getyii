@@ -48,6 +48,12 @@ return [
                 ],
             ],
         ],
+        'upyun' =>[
+            'class' => 'common\helpers\Upyun',
+            'bucketname' => 'fanqiemofang',
+            'username' => 'fanqiemofang',
+            'password' => 'xV20i6Y5e0ZZNhAs'
+        ],
         'log' => [
             // 'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

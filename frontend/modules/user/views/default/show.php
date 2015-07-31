@@ -15,7 +15,7 @@ $username = Yii::$app->getRequest()->getQueryParam('username');
         <div class="panel panel-default thumbnail center">
             <br>
             <?= Html::img($user->getUserAvatar(200), ['class' => 'img-circle img-responsive']);?>
-            <h1 class="text-center"><?= Html::tag('strong', Html::encode($user->username)) ?></h1>
+            <h1 class="text-center"><?= Html::tag('strong', Html::encode($user->label)) ?></h1>
             <p class="text-center"><?= Html::encode($user->tagline) ?></p>
             <!-- <button type="button" class="btn btn-success">Book me!</button> -->
             <!-- <button type="button" class="btn btn-info">Send me a message</button> -->

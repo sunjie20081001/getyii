@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 ?>
-<li class="list-group-item media col-sm-6 mt0">
+<li class="media col-sm-6 mt0">
 
     <?= Html::a(Html::tag('span', $model['comment_count'], ['class' => 'badge badge-reply-count']),
         ['/topic/default/view', 'id' => $model->id, '#' => 'comment' . $model['comment_count']], ['class' => 'pull-right']

@@ -21,14 +21,15 @@ $this->title = \Yii::$app->setting->get('siteName');
             </h3>
         </div>
 
-        <div class="clearfix site-index-topic row">
-            <?php if ($topics) {
-                foreach ($topics as $key => $vlaue) {
-                    echo $this->render('_item', ['model' => $vlaue]);
-                }
-            } else {
-                echo \Yii::t('app', 'Dont have any data Yet');
-            } ?>
+
+        <div class="pannel-body site-index-topic row">
+                    <?php if ($topics) {
+                        foreach ($topics as $key => $vlaue) {
+                            echo $this->render('_item', ['model' => $vlaue]);
+                        }
+                    } else {
+                        echo \Yii::t('app', 'Dont have any data Yet');
+                    } ?>
         </div>
 
         <div class="panel-footer text-right">
@@ -55,7 +56,7 @@ $this->title = \Yii::$app->setting->get('siteName');
                             ); ?>
                         </p>
                         <h5>
-                            <?= Html::a($value['username'], ['/user/default/show', 'username' => $value['username']]) ?>
+                            <?= Html::a($value['label'], ['/user/default/show', 'username' => $value['username']]) ?>
                         </h5>
                     </div>
                 </div>

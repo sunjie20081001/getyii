@@ -29,7 +29,13 @@ use dosamigos\selectize\SelectizeTextInput;
     ) ?>
 
     <?= $this->render('@frontend/views/partials/markdwon_help') ?>
-
+    <!--按钮-->
+    <div class="cu-textarea-buttons pull-right">
+        <!--预览-->
+        <a href="#" class="btn btn-info btn-sm">预览</a>
+        <!--上传图片-->
+        <a class="btn btn-info btn-sm" href="#">上传</a>
+    </div>
     <?= $form->field($model, 'content', [
         'selectors' => [
             'input' => '#md-input'
@@ -38,7 +44,7 @@ use dosamigos\selectize\SelectizeTextInput;
     ])->textarea([
         'placeholder' => '内容',
         'id' => 'md-input',
-        'rows'        => 10
+        'rows'        => 20
     ]) ?>
 
     <?= SelectizeTextInput::widget([

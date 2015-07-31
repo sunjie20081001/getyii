@@ -79,7 +79,7 @@ jQuery(function ($) {
     });
 
     // 加载代码高亮
-    hljs.initHighlightingOnLoad();
+    //hljs.initHighlightingOnLoad();
 
 
     function editorPreview() {

@@ -39,9 +39,9 @@ echo Nav::widget([
         ['label' => '社区', 'url' => ['/topic'], 'active' => $topicActive],
         //['label' => '招聘', 'url' => ['/topic/default/index', 'node' =>'jobs'], 'active' => $jobsActive],
         ['label' => '标签', 'url' => ['/site/tags'], 'active' => $topicTagsActive],
-        ['label' => '招募', 'url' => ['/site/recruit']],
+        // ['label' => '招募', 'url' => ['/site/recruit']],
         ['label' => '会员', 'url' => ['/site/users']],
-        ['label' => '体验', 'url' => ['/site/experience']],
+        // ['label' => '体验', 'url' => ['/site/experience']],
 
     ],
     'encodeLabels' => false
@@ -60,7 +60,7 @@ if (Yii::$app->user->isGuest) {
 
     // 个人中心
     $menuItems[] = [
-        'label' => Yii::$app->user->identity->display_name,
+        'label' => Yii::$app->user->identity->label,
         'items' => [
             ['label' => '我的主页', 'url' => ['/user/default']],
             ['label' => '帐号设置', 'url' => ['/user/setting/profile']],
