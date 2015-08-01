@@ -20,7 +20,7 @@ $this->title = '活跃用户';
                         );?>
                     </p>
                     <h5>
-                        <?= Html::a($value['display_name'], ['/user/default/show', 'username' => $value['username']]) ?>
+                        <?= Html::a($value['label'], ['/user/default/show', 'username' => $value['username']]) ?>
                     </h5>
                 </div>
             </div>

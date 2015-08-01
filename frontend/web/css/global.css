@@ -7049,3 +7049,12 @@ input:focus,
 .cu-textarea-buttons{
   margin-bottom: 2px;
 }
+
+.navbar-toggle .icon-bar {
+  background:#C01090;
+}
+
+.container{
+  padding-left: 5px;
+  padding-right:5px;
+}

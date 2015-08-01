@@ -14,46 +14,56 @@ $this->title = '账号设置';
 ?>
 
 <?php //echo $this->render('_alert', ['module' => Yii::$app->getModule('user')]) ?>
-<section class="container">
-    <div class="col-md-3">
-        <?= $this->render('_menu') ?>
-    </div>
-    <div class="col-md-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <?= Html::encode($this->title) ?>
-            </div>
-            <div class="panel-body">
-                <?php $form = ActiveForm::begin([
-                    'id'          => 'account-form',
-                    'options'     => ['class' => 'form-horizontal'],
-                    'fieldConfig' => [
-                        'template'     => "{label}\n<div class=\"col-lg-9\">{input}</div>\n<div class=\"col-sm-offset-3 col-lg-9\">{error}\n{hint}</div>",
-                        'labelOptions' => ['class' => 'col-lg-3 control-label'],
-                    ],
-                    'enableAjaxValidation'   => true,
-                    'enableClientValidation' => false,
-                ]); ?>
-
-                <?= $form->field($model, 'email') ?>
-
-                <?= $form->field($model, 'username') ?>
-                <?= $form->field($model, 'display_name')?>
-                <?= $form->field($model, 'tagline') ?>
-
-                <?= $form->field($model, 'new_password')->passwordInput()->hint('不填写则不修改密码') ?>
-
-                <hr/>
-
-                <?= $form->field($model, 'current_password')->passwordInput() ?>
-
-                <div class="form-group">
-                    <div class="col-lg-offset-3 col-lg-9">
-                        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?><br>
-                    </div>
+<section>
+    <div class="row">
+        <div class="col-md-3">
+            <?= $this->render('_menu') ?>
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <?= Html::encode($this->title) ?>
                 </div>
+                <div class="panel-body">
+                    <?php $form = ActiveForm::begin([
+                        'id'          => 'account-form',
+                        'options'     => ['class' => 'form-horizontal'],
+                        'fieldConfig' => [
+                            'template'     => "{label}\n<div class=\"col-lg-9\">{input}</div>\n<div class=\"col-sm-offset-3 col-lg-9\">{error}\n{hint}</div>",
+                            'labelOptions' => ['class' => 'col-lg-3 control-label'],
+                        ],
+                        'enableAjaxValidation'   => true,
+                        'enableClientValidation' => false,
+                    ]); ?>
 
-                <?php ActiveForm::end(); ?>
+                    <?= $form->field($model, 'email') ?>
+
+                    <div class="form-group field-settings-form-username required has-success">
+                        <label class="col-lg-3 control-label" for="settings-form-username">用户名</label>
+                        <div class="col-lg-9">
+                            <p class="form-control-static"><?php echo $model->username;?></p>
+                        </div>
+                        <div class="col-sm-offset-3 col-lg-9"><div class="help-block"></div>
+                        </div>
+                    </div>
+
+                    <?= $form->field($model, 'display_name')?>
+                    <?= $form->field($model, 'tagline') ?>
+
+                    <?= $form->field($model, 'new_password')->passwordInput()->hint('不填写则不修改密码') ?>
+
+                    <hr/>
+
+                    <?= $form->field($model, 'current_password')->passwordInput() ?>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-9">
+                            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?><br>
+                        </div>
+                    </div>
+
+                    <?php ActiveForm::end(); ?>
+                </div>
             </div>
         </div>
     </div>

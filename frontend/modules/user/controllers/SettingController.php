@@ -110,6 +110,7 @@ class SettingController extends Controller
 
         $this->performAjaxValidation($model);
 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', '您的用户信息修改成功');
             return $this->refresh();
