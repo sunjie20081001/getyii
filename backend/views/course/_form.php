@@ -14,7 +14,10 @@ use common\models\CourseTerms;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?= $form->field($model, 'user_id')->widget(Select2::className(), [
+        'data' => \common\models\User::getAuthors(),
+        'options' => ['placeholder' => '选择一个作者'],
+    ]) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

@@ -71,6 +71,11 @@ class AccountForm extends Model
             [['username', 'email'], 'filter', 'filter' => 'trim'],
             ['username', 'match', 'pattern' => '/^[a-zA-Z]\w+$/'],
             ['username', 'string', 'min' => 3, 'max' => 20],
+            ['username', function($attr){
+               if($this->user->username != $this->username){
+                   $this->addError($attr, '用户名不能修改！');
+               }
+            }],
             ['email', 'email'],
             [['email', 'username'], 'unique', 'when' => function ($model, $attribute) {
                 return $this->user->$attribute != $model->$attribute;
@@ -113,6 +118,10 @@ class AccountForm extends Model
     public function save()
     {
         if ($this->validate()) {
+//            if($this->user->username != $this->username){
+//                $this->addError('username','用户名不能修改');
+//                return false;
+//            }
             $this->user->username = $this->username;
             // 新密码没填写 则为不修改密码
             ($this->new_password) ? $this->user->password = $this->new_password : '';

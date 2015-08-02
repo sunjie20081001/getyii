@@ -33,7 +33,7 @@ $this->title = "课程"
         </div>
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
-            'itemOptions'  => ['class' => 'col-md-4'],
+            'itemOptions'  => ['class' => 'col-md-3'],
             'summary'      => false,
             'itemView'     => '_item',
             'layout'       => '<div class="row">{items}</div>{pager}'

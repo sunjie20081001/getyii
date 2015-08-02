@@ -4,15 +4,14 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 ?>
-<div class="video-li">    
-    <?php print_r($model);?>
-    <div class="v-img">
-        <?php echo Html::a(Html::img($model->image)) ;?>
-    </div>
-    <div class="v-title">
-        <?php echo Html::a(Html::encode($model->title));?>
-    </div>
-    <div class="v-desc">
-        <?php echo Html::encode($model->excerpt);?>
+
+<div class="thumbnail">
+
+    <?php echo Html::a(Html::img($model->image,['style' => 'height:200px; width:100%;display:block']));?>
+    <div class="caption">
+        <h3><?php echo Html::a(Html::encode($model->title));?></h3>
+        <p><?php echo Html::encode($model->excerpt);?></p>
     </div>
 </div>
+
+

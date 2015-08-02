@@ -23,9 +23,9 @@ $index += +1 + $widget->dataProvider->pagination->page * $widget->dataProvider->
 
         <div class="media-heading meta info opts">
             <?php
-            echo Html::a($model->user['username'], ['/user/default/show', 'username' => $model->user['username']], ['class' => 'author']), '•',
+            echo Html::a($model->user['label'], ['/user/default/show', 'username' => $model->user['username']], ['class' => 'author']), '•',
             Html::a("#{$index}", "#comment{$index}", ['class' => 'comment-floor']), '•',
-            Html::tag('addr', Yii::$app->formatter->asRelativeTime($model->created_at), ['title' => Yii::$app->formatter->asDatetime($model->created_at)]);
+            Html::tag('addr', Yii::$app->formatter->asDatetime($model->created_at), ['title' => Yii::$app->formatter->asDatetime($model->created_at)]);
             ?>
 
             <span class="opts pull-right">

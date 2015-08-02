@@ -35,7 +35,7 @@ NavBar::begin([
 echo Nav::widget([
     'options' => ['class' => 'nav navbar-nav '],
     'items' => [
-        //['label' => '课程', 'url' => ['/course'], 'active' => $courseActive],
+        ['label' => '课程', 'url' => ['/course'], 'active' => $courseActive],
         ['label' => '社区', 'url' => ['/topic'], 'active' => $topicActive],
         //['label' => '招聘', 'url' => ['/topic/default/index', 'node' =>'jobs'], 'active' => $jobsActive],
         ['label' => '标签', 'url' => ['/site/tags'], 'active' => $topicTagsActive],

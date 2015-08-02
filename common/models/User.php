@@ -6,6 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use common\components\db\Mailer;
 use frontend\modules\user\models\UserAccount;
@@ -32,10 +33,25 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
-    const ROLE_USER = 10;
-    const ROLE_ADMIN = 20;
-    const ROLE_SUPER_ADMIN = 30;
 
+    const ROLE_USER        = 10; //一般用户，只能评论，不能发表帖子
+    const ROLE_TIE_USER    = 11; //可发评论，帖子
+    const ROLE_AUTHOR      = 19; //可发课程
+    const ROLE_ADMIN       = 20; //可处理帖子,加精等，置顶
+    const ROLE_SUPER_ADMIN = 30; // 后台处理
+
+    /**
+     * @return array
+     */
+    public static function getRoles(){
+        return array(
+            self::ROLE_USER        => '一般用户',
+            self::ROLE_TIE_USER    => '发贴用户',
+            self::ROLE_AUTHOR      => '视频作者',
+            self::ROLE_ADMIN       => '一般管理',
+            self::ROLE_SUPER_ADMIN => '超级管理',
+        );
+    }
     /**
      * @inheritdoc
      */
@@ -63,8 +79,8 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
 
-            ['role', 'default', 'value' => 10],
-            ['role', 'in', 'range' => [self::ROLE_USER, self::ROLE_ADMIN, self::ROLE_SUPER_ADMIN]],
+            ['role', 'default', 'value' => self::ROLE_USER],
+            ['role', 'in', 'range' => array_keys(static::getRoles())],
         ];
     }
 
@@ -283,4 +299,9 @@ class User extends ActiveRecord implements IdentityInterface
     public function getLabel(){
         return !empty($this->display_name)?$this->display_name:$this->username;
     }
+
+    public static function getAuthors(){
+        return ArrayHelper::map(static::find()->where(['role' => self::ROLE_AUTHOR])->all(), 'id', 'username');
+    }
+
 }
