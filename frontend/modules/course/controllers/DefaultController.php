@@ -36,7 +36,7 @@ class DefaultController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
-                    ['allow' => true, 'actions' => ['index'], 'verbs' => ['GET'] ],
+                    ['allow' => true, 'actions' => ['index','view'], 'verbs' => ['GET'] ],
                     ['allow' => true, 'actions' => ['delete'], 'verbs' => ['POST'], 'roles' =>['@']]
                 ]
             ]

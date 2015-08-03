@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 <div class="thumbnail">
 
-    <?php echo Html::a(Html::img($model->image,['style' => 'height:200px; width:100%;display:block']));?>
+    <?php echo Html::a(Html::img($model->image,['style' => 'height:200px; width:100%;display:block']),['default/view','id'=> $model->id]);?>
     <div class="caption">
         <h3><?php echo Html::a(Html::encode($model->title));?></h3>
         <p><?php echo Html::encode($model->excerpt);?></p>
