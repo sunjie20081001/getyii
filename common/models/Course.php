@@ -65,7 +65,7 @@ class Course extends ActiveRecord
             'id' => 'ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'user_id' => '用户',
+            'user_id' => '视频作者',
             'title' => '标题',
             'content' => '内容',
             'video_url' => '视频地址',
@@ -93,11 +93,12 @@ class Course extends ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * 获取课程作者
+     * @return \common\models\User
      */
-    public function getUser()
+    public function getAuthor()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id'])->one();
     }
 
     /**

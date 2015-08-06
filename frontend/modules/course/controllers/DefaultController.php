@@ -95,9 +95,15 @@ class DefaultController extends Controller
     */
     public function actionView($id){
         $model = Course::findOne($id);
-        
+
+//        $dataProvider = new ActiveDataProvider([
+//            'query'      => $model->getVideos(),
+//        ]);
+       
         return $this->render('view', [
-            'model' => $model
+            'model' => $model,
+            'author' => $model->getAuthor(),
+//            'dataProvider' => $dataProvider,
         ]);
     }
     
