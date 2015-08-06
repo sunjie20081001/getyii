@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use common\models\CourseTerms;
 use common\models\CourseTermsSearch;
-use common\components\Controller;
+use backend\controllers\MyController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CourseTermsController implements the CRUD actions for CourseTerms model.
  */
-class CourseTermsController extends Controller
+class CourseTermsController extends MyController
 {
     public function behaviors()
     {

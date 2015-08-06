@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use common\models\CoruseUser;
 use common\models\CourseUserSearch;
-use common\components\Controller;
+use backend\controllers\MyController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * CourseUserController implements the CRUD actions for CoruseUser model.
  */
-class CourseUserController extends Controller
+class CourseUserController extends MyController
 {
     public function behaviors()
     {

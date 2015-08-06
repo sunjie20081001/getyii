@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use common\models\RightLink;
 use backend\models\RightLinkSearch;
-use yii\web\Controller;
+use backend\controllers\MyController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * RightLinkController implements the CRUD actions for RightLink model.
  */
-class RightLinkController extends Controller
+class RightLinkController extends MyController
 {
     public function behaviors()
     {

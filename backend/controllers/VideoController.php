@@ -5,14 +5,14 @@ namespace backend\controllers;
 use Yii;
 use common\models\Video;
 use common\models\VideoSearch;
-use common\components\Controller;
+use backend\controllers\MyController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * VideoController implements the CRUD actions for Video model.
  */
-class VideoController extends Controller
+class VideoController extends MyController
 {
     public function behaviors()
     {
