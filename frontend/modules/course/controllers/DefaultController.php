@@ -2,7 +2,7 @@
 
 namespace frontend\modules\course\controllers;
 
-use yii\web\Controller;
+use common\components\Controller;
 
 use common\models\Course;
 use common\models\CourseSearch;
@@ -103,7 +103,7 @@ class DefaultController extends Controller
         return $this->render('view', [
             'model' => $model,
             'author' => $model->getAuthor(),
-//            'dataProvider' => $dataProvider,
+            'videos' => $model->getVideos(),
         ]);
     }
     

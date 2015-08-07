@@ -10,7 +10,9 @@
 /* @var $model common\models\Course */
 
 use yii\helpers\Html;
+use frontend\assets\VideoAsset;
 
+VideoAsset::register($this);
 $this->title = Html::encode($model->title);
 ?>
 
@@ -19,7 +21,7 @@ $this->title = Html::encode($model->title);
     <div class="col-md-8">
             <!--视频宣传 start-->
             <div class="course-video">
-                
+                 <?php echo Html::a(Html::img($model->image));?>
             </div>
             <!--视频宣传 end-->
     </div>
@@ -35,8 +37,20 @@ $this->title = Html::encode($model->title);
 </div>
 
 <!--视频列表　start-->
-<div class="course-list">
-    
+<div class="course-list row">
+    <div class="col-md-12">
+        <ul class="list-group">
+               <?php
+                   foreach($videos as $video){
+                       ?>
+                       <li class="list-group-item">
+                           <?php echo  Html::a(Html::encode($video->title),['/course/video/view', 'id'=>$video->id]);?>
+                       </li>
+                       <?php
+                   }
+               ?>
+        </ul>
+    </div>
 </div>
 <!--视频列表　end-->
 

@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use common\components\db\ActiveRecord;
 
 /**
@@ -106,7 +107,7 @@ class Course extends ActiveRecord
      */
     public function getVideos()
     {
-        return $this->hasMany(Video::className(), ['course_id' => 'id']);
+        return $this->hasMany(Video::className(), ['course_id' => 'id'])->all();
     }
     
     public function recValues(){
@@ -114,5 +115,10 @@ class Course extends ActiveRecord
             self::REC_NO  => '不推荐',
             self::REC_YES => '推荐',            
         ];
+    }
+    
+    
+    public static function getCourseArray(){
+        return ArrayHelper::map(static::find()->all(),'id','title');
     }
 }
