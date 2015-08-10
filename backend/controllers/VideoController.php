@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Video;
 use common\models\VideoSearch;
+use common\models\Course;
 use backend\controllers\MyController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -117,5 +118,16 @@ class VideoController extends MyController
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionChapterlist(){
+        \yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $course_id = \Yii::$app->request->post('course_id');
+
+        if($course_id){
+            return Course::getChaptersByCourse($course_id);
+        }
+
+        return [];
     }
 }

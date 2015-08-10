@@ -6,7 +6,6 @@
  * Time: 下午6:33
  */
 
-use yii;
 use yii\helpers\Html;
 
 if(isset($terms)){

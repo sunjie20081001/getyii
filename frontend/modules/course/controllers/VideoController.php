@@ -3,6 +3,7 @@ namespace frontend\modules\course\controllers;
 
 use common\components\Controller;
 use common\models\Video;
+use common\models\Course;
 use yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -32,13 +33,14 @@ class VideoController extends Controller
     public function actionView($id)
     {
         $model = Video::findOne($id);
-        $course = $model->getCourse();
-        $author = $course->getAuthor();
+        $course = $model->course;
+        $author = $course->author;
 
         return $this->render('view', [
             'model' => $model,
             'course' => $course,
-            'author' => $author
+            'author' => $author,
+            'chapters' => Course::getVideoList($course->id),
         ]);
     }
 

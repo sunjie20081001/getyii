@@ -39,18 +39,32 @@ $this->title = Html::encode($model->title);
 <!--视频列表　start-->
 <div class="course-list row">
     <div class="col-md-12">
-        <ul class="list-group">
-               <?php
-                   foreach($videos as $video){
-                       ?>
-                       <li class="list-group-item">
-                           <?php echo  Html::a(Html::encode($video->title),['/course/video/view', 'id'=>$video->id]);?>
-                       </li>
-                       <?php
-                   }
-               ?>
-        </ul>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <?php
+                foreach($chapters as $chapter){
+                    ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?php echo $chapter->id;?>" aria-expanded="false" aria-controls="collapseOne">
+                                    <?php echo $chapter->title;?>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_<?php echo $chapter->id;?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="list-group">
+                                <?php
+                                    foreach($chapter->videos as $video){
+                                        echo Html::a(Html::encode($video->title),['/course/video/view','id'=>$video->id],['class' => 'list-group-item']);
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            ?>
+        </div>
     </div>
 </div>
 <!--视频列表　end-->
-

@@ -99,11 +99,12 @@ class DefaultController extends Controller
 //        $dataProvider = new ActiveDataProvider([
 //            'query'      => $model->getVideos(),
 //        ]);
-       
+
+        //var_dump(Course::getVideoList($model->id));
         return $this->render('view', [
             'model' => $model,
             'author' => $model->getAuthor(),
-            'videos' => $model->getVideos(),
+            'chapters' => Course::getVideoList($model->id),
         ]);
     }
     

@@ -25,8 +25,8 @@ $jobsActive = ($node == 'jobs') ? true : false;
 
 
 NavBar::begin([
-    //'brandLabel' => Html::img('/images/logo.png'),
-    'brandLabel' => '番茄魔方',
+    'brandLabel' => Html::img('/images/logo.png',['class'=>'logo']),
+    //'brandLabel' => '番茄魔方',
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
         'class' => 'br0',

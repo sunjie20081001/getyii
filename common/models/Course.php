@@ -6,6 +6,7 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use common\components\db\ActiveRecord;
 
+
 /**
  * This is the model class for table "course".
  *
@@ -107,7 +108,7 @@ class Course extends ActiveRecord
      */
     public function getVideos()
     {
-        return $this->hasMany(Video::className(), ['course_id' => 'id'])->all();
+        return $this->hasMany(Video::className(), ['course_id' => 'id'])->orderBy(['sort_order' => SORT_ASC])->all();
     }
     
     public function recValues(){
@@ -121,4 +122,35 @@ class Course extends ActiveRecord
     public static function getCourseArray(){
         return ArrayHelper::map(static::find()->all(),'id','title');
     }
+
+    /**
+     * 返回章节的数组
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public function getChapters(){
+        return $this->hasMany(Chapter::className(), ['course_id' => 'id'])->orderBy(['sort_order' => SORT_ASC]);
+    }
+
+    /**
+     * @param $course_id
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getChaptersByCourse($course_id){
+        $model = static::findOne($course_id);
+        if($model !== null){
+           return $model->chapters;
+        } else {
+          return [];
+        }
+    }
+
+
+    public static function getVideoList($course_id){
+        $chapters = Chapter::find()
+            ->where(['course_id' => $course_id])
+            ->with('videos')
+            ->all();
+        return $chapters;
+    }
+
 }

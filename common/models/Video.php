@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use common\components\db\ActiveRecord;
 
+
 /**
  * This is the model class for table "video".
  *
@@ -18,6 +19,7 @@ use common\components\db\ActiveRecord;
  * @property integer $user_id
  * @property integer $status
  * @property integer $course_id
+ * @property integer $sort_order
  *
  * @property CoruseUser[] $coruseUsers
  * @property Course $course
@@ -38,7 +40,7 @@ class Video extends ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'user_id', 'status', 'course_id'], 'integer'],
+            [['created_at', 'updated_at', 'user_id', 'status','chapter_id', 'course_id','sort_order'], 'integer'],
             [['content'], 'string'],
             [['type'], 'string', 'max' => 32],
             [['title', 'video_url'], 'string', 'max' => 255]
@@ -61,6 +63,8 @@ class Video extends ActiveRecord
             'user_id' => '用户',
             'status' => '状态',
             'course_id' => '课程',
+            'chapter_id' => '章节',
+            'sort_order' => '排序',
         ];
     }
 
@@ -77,6 +81,15 @@ class Video extends ActiveRecord
      */
     public function getCourse()
     {
-        return $this->hasOne(Course::className(), ['id' => 'course_id'])->one();
+        return $this->hasOne(Course::className(), ['id' => 'course_id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getChapter(){
+        return $this->hasOne(Chapter::className(),['id' => 'chapter_id']);
+    }
+
+
 }
